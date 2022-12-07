@@ -1,8 +1,7 @@
-import express, { Request, Response } from "express";
 import { ResponseData } from "../models/response-data.model";
-export const router = express.Router();
+import { Request, Response } from "express";
 
-router.post("/", (req: Request, res: Response) => {
+export function login(req: Request, res: Response) {
   const { username, password } = req.body;
 
   if (username && password) {
@@ -16,4 +15,4 @@ router.post("/", (req: Request, res: Response) => {
       .status(400)
       .json(new ResponseData(false, 400, { message: "malformed query!" }));
   }
-});
+}
